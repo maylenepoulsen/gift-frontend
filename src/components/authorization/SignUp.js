@@ -10,7 +10,32 @@ class SignUp extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log("handling submission of form");
+
+    const newUser = {
+      name: this.state.name,
+      password_digest: this.state.password,
+      email: this.state.email
+    }
+
+    fetch('http://localhost:3001/api/v1/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(newUser)
+    })
+    .then(response => response.json())
+    .then(data => {
+      localStorage.setItem('token', data.jwt)
+      console.log(data)
+      this.setState({
+        name: "",
+        password: "",
+        passwordConfirmation: "",
+        email: "",
+      })
+    })
   };
 
   handleChange = (event) => {
