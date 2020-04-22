@@ -1,38 +1,31 @@
 import React, { Component } from "react";
 
-class SignUp extends Component {
+class Login extends Component {
   state = {
-    name: "",
-    password: "",
     email: "",
+    password: "",
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
 
-    const newUser = {
-      name: this.state.name,
-      password: this.state.password,
+    const user = {
       email: this.state.email,
+      password: this.state.password,
     };
 
-    fetch("http://localhost:3001/api/v1/users", {
+    fetch("http://localhost:3001/api/v1/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
+        'Accept': "application/json",
       },
-      body: JSON.stringify(newUser),
+      body: JSON.stringify(user),
     })
       .then((response) => response.json())
       .then((data) => {
         localStorage.setItem("token", data.jwt);
         console.log(data);
-        this.setState({
-          name: "",
-          password: "",
-          email: "",
-        });
       });
   };
 
@@ -46,14 +39,6 @@ class SignUp extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            value={this.state.name}
-            onChange={this.handleChange}
-            required
-          />
           <input
             type="email"
             name="email"
@@ -70,11 +55,11 @@ class SignUp extends Component {
             onChange={this.handleChange}
             required
           />
-          <button type="submit">Sign Up</button>
+          <button type="submit">Login</button>
         </form>
       </div>
     );
   }
 }
 
-export default SignUp;
+export default Login;
