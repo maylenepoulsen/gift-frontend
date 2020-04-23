@@ -7,7 +7,7 @@ class HomePage extends Component {
         return (
             <div>
                 <h2>This is the Home Page</h2>
-                <Login handleLogin={this.props.handleLogin}/>
+                <Login handleLogin={this.props.handleLogin} routerProps={this.props.routerProps}/>
                 <SignUp />
             </div>
         )

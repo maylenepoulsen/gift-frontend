@@ -26,6 +26,7 @@ class Login extends Component {
       .then((data) => {
         localStorage.setItem("token", data.jwt);
         this.props.handleLogin(data.user)
+        this.props.routerProps.history.push(`/users/${data.user.id}`)
       });
       this.setState({
         email: "",
