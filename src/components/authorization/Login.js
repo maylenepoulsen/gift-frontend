@@ -25,8 +25,12 @@ class Login extends Component {
       .then((response) => response.json())
       .then((data) => {
         localStorage.setItem("token", data.jwt);
-        console.log(data);
+        this.props.handleLogin(data.user)
       });
+      this.setState({
+        email: "",
+        password: "",
+      })
   };
 
   handleChange = (event) => {
