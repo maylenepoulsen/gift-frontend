@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import HomePage from "./HomePage";
 import UserHomePage from "./UserHomePage";
+import CreateGroup from "./CreateGroup";
 
 class App extends Component {
   state = {
@@ -15,29 +16,55 @@ class App extends Component {
     this.setState({ auth: currentUser });
   };
 
+  handleLogout = () => {
+    this.setState({ auth: { currentUser: {} } });
+  };
+
   render() {
     return (
       <div>
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={(routerProps) => {
-              return (
-                <HomePage
-                  handleLogin={this.handleLogin}
-                  routerProps={routerProps}
-                />
-              );
-            }}
-          />
-          <Route
-          path={`/users/${this.state.auth.currentUser.id}`}
-          render={() => {
-            return <UserHomePage />
+        <Route
+          exact
+          path="/"
+          render={(routerProps) => {
+            return (
+              <HomePage
+                handleLogin={this.handleLogin}
+                routerProps={routerProps}
+              />
+            );
           }}
-          />
-        </Switch>
+        />
+        {this.state.auth.currentUser.id ? (
+          <Switch>
+            <Route
+              path={`/users/${this.state.auth.currentUser.id}`}
+              render={(routerProps) => {
+                return (
+                  <UserHomePage
+                    currentUser={this.state.auth.currentUser}
+                    handleLogout={this.handleLogout}
+                    routerProps={routerProps}
+                  />
+                );
+              }}
+            />
+            <Route
+              path="/create-group"
+              render={(routerProps) => {
+                return (
+                  <CreateGroup
+                    currentUser={this.state.auth.currentUser}
+                    handleLogout={this.handleLogout}
+                    routerProps={routerProps}
+                  />
+                );
+              }}
+            />
+          </Switch>
+        ) : (
+          <Redirect to="/" />
+        )}
       </div>
     );
   }
