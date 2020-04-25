@@ -4,7 +4,7 @@ import NavBar from "./components/NavBar";
 
 class UserHomePage extends Component {
   render() {
-      console.log(this.props.currentUser)
+     
     return (
       <div>
         <NavBar 

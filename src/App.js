@@ -18,6 +18,7 @@ class App extends Component {
 
   handleLogout = () => {
     this.setState({ auth: { currentUser: {} } });
+    localStorage.clear()
   };
 
   render() {
