@@ -27,12 +27,14 @@ class SignUp extends Component {
       .then((response) => response.json())
       .then((data) => {
         localStorage.setItem("token", data.jwt);
-        console.log(data);
-        this.setState({
-          name: "",
-          password: "",
-          email: "",
-        });
+        this.props.handleLogin(data.user)
+        this.props.routerProps.history.push(`/users/${data.user.id}`)
+       
+      });
+      this.setState({
+        name: "",
+        password: "",
+        email: "",
       });
   };
 
