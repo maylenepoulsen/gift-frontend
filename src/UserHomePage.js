@@ -1,18 +1,63 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import NavBar from "./components/NavBar";
-import GroupInvite from './components/GroupInvite';
-import GroupsUserBelongsTo from './components/GroupsUserBelongsTo';
+import GroupInvite from "./components/GroupInvite";
+import GroupsUserBelongsTo from "./components/GroupsUserBelongsTo";
 
 class UserHomePage extends Component {
+  state = {
+    userGroups: "",
+    groupsPending: "",
+    groupsAccept: "",
+  };
+
+  componentDidMount() {
+    const user_id = this.props.currentUser.id;
+    fetch(`http://localhost:3001/api/v1/invites/${user_id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        this.setState({
+          userGroups: data.filtered,
+          groupsPending: data.groups,
+          groupsAccept: data.accept
+        });
+      });
+  }
+
+  handleAccept = (id) => {
+    console.log(id)
+    const group = this.state.userGroups.filter(
+      (group) => group.group_id === id
+    );
+    let userGroupId = group[0].id;
+
+    fetch(`http://localhost:3001/api/v1/user_groups/${userGroupId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({ status: "accept" }),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+      });
+  };
+
+  handleDecline = (id) => {
+    console.log(id)
+    
+}
+
   render() {
-     
     return (
       <div>
-        <NavBar 
-        currentUser={this.props.currentUser}
-        handleLogout={this.props.handleLogout}
-        routerProps={this.props.routerProps}
+        <NavBar
+          currentUser={this.props.currentUser}
+          handleLogout={this.props.handleLogout}
+          routerProps={this.props.routerProps}
         />
         This is the Users Home Page
         <Link to="/create-group">
@@ -20,12 +65,20 @@ class UserHomePage extends Component {
         </Link>
         <div>
           <span>
-          Invites to Groups:
-          <GroupInvite currentUser={this.props.currentUser}/>
+            Invites to Groups:
+            <GroupInvite
+              currentUser={this.props.currentUser}
+              groupsPending={this.state.groupsPending}
+              handleAccept={this.handleAccept}
+              handleDecline={this.handleDecline}
+            />
           </span>
           <span>
             Groups User Belongs to:
-          <GroupsUserBelongsTo currentUser={this.props.currentUser}/>
+            <GroupsUserBelongsTo
+              currentUser={this.props.currentUser}
+              groupsAccept={this.state.groupsAccept}
+            />
           </span>
         </div>
       </div>

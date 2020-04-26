@@ -6,53 +6,28 @@ class GroupInvite extends Component {
     groups: "",
   };
 
-  componentDidMount() {
-    const user_id = this.props.currentUser.id;
-    fetch(`http://localhost:3001/api/v1/invites/${user_id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({
-          userGroups: data.filtered,
-          groups: data.groups,
-        });
-      });
+  handleClickAccept = event => {
+    let id = event.target.id;
+    let ID = parseInt(id);
+    this.props.handleAccept(ID)
   }
 
-  handleAccept = (event) => {
-      let id = event.target.id
-      let ID = parseInt(id) 
-      const group = this.state.userGroups.filter(group => group.group_id === ID)
-      let userGroupId = group[0].id
-
-    fetch(`http://localhost:3001/api/v1/user_groups/${userGroupId}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({status: 'accept'})
-    })
-    .then(response => response.json())
-    .then(result => {
-      console.log(result)
-    })
-  }
-
-  handleDecline = (event) => {
-      console.log(event.target.id)
-      
+  handleClickDecline = event => {
+    let id = event.target.id
+    let ID = parseInt(id)
+    this.props.handleDecline(ID)
   }
 
   render() {
-    if (this.state.groups) {
+    if (this.props.groupsPending) {
       return (
         <div>
           <ul>
-            {this.state.groups.map((group) => (
+            {this.props.groupsPending.map((group) => (
               <li key={group.id}>
                 {group.name}
-                <button onClick={this.handleAccept} id={group.id}>Accept</button>
-                <button onClick={this.handleDecline} id={group.id}>Decline</button>
+                <button onClick={this.handleClickAccept} id={group.id}>Accept</button>
+                <button onClick={this.handleClickDecline} id={group.id}>Decline</button>
               </li>
             ))}
           </ul>
