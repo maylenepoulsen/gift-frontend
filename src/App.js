@@ -5,6 +5,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import HomePage from "./HomePage";
 import UserHomePage from "./UserHomePage";
 import CreateGroup from "./CreateGroup";
+import GroupHomePage from './GroupHomePage';
 
 class App extends Component {
   state = {
@@ -60,6 +61,18 @@ class App extends Component {
                     routerProps={routerProps}
                   />
                 );
+              }}
+            />
+            <Route
+              exact path='/groups/:id'
+              render={(routerProps) => {
+                return (
+                  <GroupHomePage 
+                    currentUser={this.state.auth.currentUser}
+                    handleLogout={this.handleLogout}
+                    routerProps={routerProps}
+                  />
+                )
               }}
             />
           </Switch>

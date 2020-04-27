@@ -6,9 +6,9 @@ import GroupsUserBelongsTo from "./components/GroupsUserBelongsTo";
 
 class UserHomePage extends Component {
   state = {
-    userGroups: "",
-    groupsPending: "",
-    groupsAccept: "",
+    userGroups: [],
+    groupsPending: [],
+    groupsAccept: [],
   };
 
   componentDidMount() {
@@ -16,7 +16,6 @@ class UserHomePage extends Component {
     fetch(`http://localhost:3001/api/v1/invites/${user_id}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         this.setState({
           userGroups: data.filtered,
           groupsPending: data.groups,
@@ -26,7 +25,6 @@ class UserHomePage extends Component {
   }
 
   handleAccept = (id) => {
-    console.log(id)
     const group = this.state.userGroups.filter(
       (group) => group.group_id === id
     );
@@ -42,13 +40,29 @@ class UserHomePage extends Component {
     })
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
+
+        const newPending = this.state.groupsPending.filter(group => group.id !== result.group_id)
+        const newAccept = this.state.groupsPending.find(group => group.id === result.group_id)
+
+        this.setState({
+          groupsPending: [...newPending],
+          groupsAccept: [...this.state.groupsAccept, newAccept]
+        })
       });
   };
 
-  handleDecline = (id) => {
-    console.log(id)
+  handleDecline = (id) => {  
+    const group = this.state.userGroups.find((group) => group.group_id === id);
+    const userGroupIdToDelete = group.id
+
+    fetch(`http://localhost:3001/api/v1/user_groups/${userGroupIdToDelete}`, {
+      method: 'DELETE'
+    })
     
+    const newPending = this.state.groupsPending.filter(group => group.id !== id)
+    this.setState({
+     groupsPending: [...newPending]
+    })   
 }
 
   render() {
@@ -78,6 +92,7 @@ class UserHomePage extends Component {
             <GroupsUserBelongsTo
               currentUser={this.props.currentUser}
               groupsAccept={this.state.groupsAccept}
+              routerProps={this.props.routerProps}
             />
           </span>
         </div>

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class GroupsUserBelongsTo extends Component {
   render() {
@@ -7,7 +8,11 @@ class GroupsUserBelongsTo extends Component {
         <div>
           <ul>
             {this.props.groupsAccept.map((group) => (
-              <li key={group.id}>{group.name}</li>
+              <Link key={group.id} to={`/groups/${group.id}`}>
+                <li key={group.id} id={group.id}>
+                  {group.name}
+                </li>
+              </Link>
             ))}
           </ul>
         </div>
