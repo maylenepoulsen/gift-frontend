@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import StartGroup from './components/StartGroup';
+import StartGroup from "./components/StartGroup";
 import NavBar from "./components/NavBar";
 
 class CreateGroup extends Component {
@@ -13,7 +13,10 @@ class CreateGroup extends Component {
         />
         <h2>This is the Page to Create A Group</h2>
         <div>
-         <StartGroup currentUser={this.props.currentUser}/>
+          <StartGroup
+            currentUser={this.props.currentUser}
+            routerProps={this.props.routerProps}
+          />
         </div>
       </div>
     );

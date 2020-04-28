@@ -6,6 +6,7 @@ import HomePage from "./HomePage";
 import UserHomePage from "./UserHomePage";
 import CreateGroup from "./CreateGroup";
 import GroupHomePage from './GroupHomePage';
+import AddRecipient from "./components/AddRecipient";
 
 class App extends Component {
   state = {
@@ -56,6 +57,18 @@ class App extends Component {
               render={(routerProps) => {
                 return (
                   <CreateGroup
+                    currentUser={this.state.auth.currentUser}
+                    handleLogout={this.handleLogout}
+                    routerProps={routerProps}
+                  />
+                );
+              }}
+            />
+            <Route
+              exact path="/add-recipient/group/:id"
+              render={(routerProps) => {
+                return (
+                  <AddRecipient
                     currentUser={this.state.auth.currentUser}
                     handleLogout={this.handleLogout}
                     routerProps={routerProps}

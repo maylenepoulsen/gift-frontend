@@ -9,6 +9,7 @@ class UserHomePage extends Component {
     userGroups: [],
     groupsPending: [],
     groupsAccept: [],
+    groupsAdmin: [],
   };
 
   componentDidMount() {
@@ -19,7 +20,8 @@ class UserHomePage extends Component {
         this.setState({
           userGroups: data.filtered,
           groupsPending: data.groups,
-          groupsAccept: data.accept
+          groupsAccept: data.accept,
+          groupsAdmin: data.admin_groups
         });
       });
   }
@@ -92,6 +94,7 @@ class UserHomePage extends Component {
             <GroupsUserBelongsTo
               currentUser={this.props.currentUser}
               groupsAccept={this.state.groupsAccept}
+              groupsAdmin={this.state.groupsAdmin}
               routerProps={this.props.routerProps}
             />
           </span>

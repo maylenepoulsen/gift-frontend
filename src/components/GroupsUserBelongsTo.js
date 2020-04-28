@@ -6,15 +6,28 @@ class GroupsUserBelongsTo extends Component {
     if (this.props.groupsAccept) {
       return (
         <div>
-          <ul>
-            {this.props.groupsAccept.map((group) => (
-              <Link key={group.id} to={`/groups/${group.id}`}>
-                <li key={group.id} id={group.id}>
-                  {group.name}
-                </li>
-              </Link>
-            ))}
-          </ul>
+          <div>
+            <ul>
+              {this.props.groupsAccept.map((group) => (
+                <Link key={group.id} to={`/groups/${group.id}`}>
+                  <li key={group.id} id={group.id}>
+                    {group.name}
+                  </li>
+                </Link>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <ul>
+              {this.props.groupsAdmin.map((group) => (
+                <Link key={group.id} to={`/groups/${group.id}`}>
+                  <li key={group.id} id={group.id}>
+                    {group.name}
+                  </li>
+                </Link>
+              ))}
+            </ul>
+          </div>
         </div>
       );
     } else return <div></div>;

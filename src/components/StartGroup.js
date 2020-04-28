@@ -54,7 +54,12 @@ class StartGroup extends Component {
         Accept: "application/json",
       },
       body: JSON.stringify(group),
-    });
+    })
+    .then(response => response.json())
+    .then(result => {
+      this.props.routerProps.history.push(`/add-recipient/group/${result.id}`)
+    })
+    ;
   };
 
   render() {
