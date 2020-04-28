@@ -81,10 +81,7 @@ class AddRecipient extends Component {
       body: JSON.stringify(recipients),
     })
       .then((response) => response.json())
-      .then((result) => {
-        console.log(result)
-        this.props.routerProps.history.push(`/groups/${this.state.group.id}`)
-      });
+      .then(this.props.routerProps.history.push(`/groups/${this.state.group.id}`));
   };
 
   render() {

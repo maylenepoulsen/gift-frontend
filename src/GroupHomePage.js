@@ -1,12 +1,18 @@
 import React, { Component } from "react";
 
 import NavBar from "./components/NavBar";
+import AddGift from './components/AddGift';
+import ShowGiftIdeas from './components/ShowGiftIdeas';
+import Post from './components/Post';
+import ListPosts from './components/ListPosts';
 
 class GroupHomePage extends Component {
   state = {
     group: "",
     members: [],
     recipients: [],
+    giftIdeas: [],
+    posts: []
   };
 
   componentDidMount() {
@@ -18,8 +24,22 @@ class GroupHomePage extends Component {
           group: result.group,
           members: result.members,
           recipients: result.recipients,
+          giftIdeas: result.gifts.flat(),
+          posts: result.posts
         });
       });
+  }
+
+  addGiftToGiftIdeas = (gift) => {
+   this.setState({
+     giftIdeas: [...this.state.giftIdeas, gift]
+   })
+  }
+
+  addNewPost = (post) => {
+    this.setState({
+      posts: [...this.state.posts, post]
+    })
   }
 
   render() {
@@ -47,6 +67,22 @@ class GroupHomePage extends Component {
               <li key={recipient.id}>{recipient.name}</li>
             ))}
           </ul>
+        </div>
+        <div>
+          <ListPosts posts={this.state.posts}/>
+        </div>
+        <div>
+          <Post currentUser={this.props.currentUser} group={this.state.group}  addNewPost={this.addNewPost} />
+        </div>
+        <div>
+          <AddGift recipients={this.state.recipients} addGiftToGiftIdeas={this.addGiftToGiftIdeas}/>
+        </div>
+        <div>
+          <ShowGiftIdeas gifts={this.state.giftIdeas} recipients={this.state.recipients}/> 
+        </div>
+        <div>
+          {(this.props.currentUser.id === this.state.group.admin_user_id) ? 
+           <button>Delete Group</button> : <div></div>}
         </div>
       </div>
     );
