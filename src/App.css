@@ -1,0 +1,54 @@
+.background {
+  position: relative;
+  background: url("https://images.unsplash.com/photo-1512418490979-92798cec1380?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1330&q=80");
+  object-fit: cover;
+  background-repeat: no-repeat;
+  left: 0 px;
+  height: 550px;
+  width: 1330;
+}
+
+.how-it-works {
+  position: absolute;
+  background: white;
+  top: 60px;
+  right: 45px;
+  height: 425px;
+  width: 360px;
+}
+
+.home-ul {
+  list-style-type: none;
+}
+
+.login-li {
+  display: inline;
+  text-align: right;
+}
+
+.signup-li {
+  display: inline;
+  text-align: right;
+}
+
+.welcome {
+  position: absolute;
+  top: 20px;
+  left: 46px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 40px;
+  color: #3e6b89;
+}
+
+.giving {
+  position: relative;
+  top: 60px;
+  left: 39px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 27px;
+  color: #3dd2cc;
+}
+
+footer {
+  height: 50px;
+}
