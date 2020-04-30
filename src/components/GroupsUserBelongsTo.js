@@ -7,7 +7,7 @@ class GroupsUserBelongsTo extends Component {
       return (
         <div>
           <div>
-            <ul>
+            <ul className='group-invite'>
               {this.props.groupsAccept.map((group) => (
                 <Link key={group.id} to={`/groups/${group.id}`}>
                   <li key={group.id} id={group.id}>
@@ -16,9 +16,7 @@ class GroupsUserBelongsTo extends Component {
                 </Link>
               ))}
             </ul>
-          </div>
-          <div>
-            <ul>
+            <ul className='group-invite'>
               {this.props.groupsAdmin.map((group) => (
                 <Link key={group.id} to={`/groups/${group.id}`}>
                   <li key={group.id} id={group.id}>

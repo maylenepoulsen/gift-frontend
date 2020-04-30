@@ -22,12 +22,12 @@ class GroupInvite extends Component {
     if (this.props.groupsPending) {
       return (
         <div>
-          <ul>
+          <ul className='group-invite'>
             {this.props.groupsPending.map((group) => (
               <li key={group.id}>
                 {group.name}
-                <button onClick={this.handleClickAccept} id={group.id}>Accept</button>
-                <button onClick={this.handleClickDecline} id={group.id}>Decline</button>
+                <button className='accept' onClick={this.handleClickAccept} id={group.id}>Accept</button>
+                <button className='decline' onClick={this.handleClickDecline} id={group.id}>Decline</button>
               </li>
             ))}
           </ul>

@@ -21,7 +21,7 @@ class UserHomePage extends Component {
           userGroups: data.filtered,
           groupsPending: data.groups,
           groupsAccept: data.accept,
-          groupsAdmin: data.admin_groups
+          groupsAdmin: data.admin_groups,
         });
       });
   }
@@ -42,62 +42,91 @@ class UserHomePage extends Component {
     })
       .then((response) => response.json())
       .then((result) => {
-
-        const newPending = this.state.groupsPending.filter(group => group.id !== result.group_id)
-        const newAccept = this.state.groupsPending.find(group => group.id === result.group_id)
+        const newPending = this.state.groupsPending.filter(
+          (group) => group.id !== result.group_id
+        );
+        const newAccept = this.state.groupsPending.find(
+          (group) => group.id === result.group_id
+        );
 
         this.setState({
           groupsPending: [...newPending],
-          groupsAccept: [...this.state.groupsAccept, newAccept]
-        })
+          groupsAccept: [...this.state.groupsAccept, newAccept],
+        });
       });
   };
 
-  handleDecline = (id) => {  
+  handleDecline = (id) => {
     const group = this.state.userGroups.find((group) => group.group_id === id);
-    const userGroupIdToDelete = group.id
+    const userGroupIdToDelete = group.id;
 
     fetch(`http://localhost:3001/api/v1/user_groups/${userGroupIdToDelete}`, {
-      method: 'DELETE'
-    })
-    
-    const newPending = this.state.groupsPending.filter(group => group.id !== id)
+      method: "DELETE",
+    });
+
+    const newPending = this.state.groupsPending.filter(
+      (group) => group.id !== id
+    );
     this.setState({
-     groupsPending: [...newPending]
-    })   
-}
+      groupsPending: [...newPending],
+    });
+  };
 
   render() {
     return (
       <div>
-        <NavBar
-          currentUser={this.props.currentUser}
-          handleLogout={this.props.handleLogout}
-          routerProps={this.props.routerProps}
-        />
-        This is the Users Home Page
-        <Link to="/create-group">
-          <button>Create a New Group</button>
-        </Link>
         <div>
-          <span>
-            Invites to Groups:
+          <NavBar
+            currentUser={this.props.currentUser}
+            handleLogout={this.props.handleLogout}
+            routerProps={this.props.routerProps}
+          />
+        </div>
+        <div className="welcome-user">
+          Welcome {this.props.currentUser.name}
+        </div>
+
+        <div>
+          <div
+            style={{
+              display: "inline-block",
+              position: "absolute",
+              left: "250px",
+              top: "150px",
+            }}
+          >
+            <h2 className="invites-to-groups">Invites to Groups</h2>
             <GroupInvite
               currentUser={this.props.currentUser}
               groupsPending={this.state.groupsPending}
               handleAccept={this.handleAccept}
               handleDecline={this.handleDecline}
             />
-          </span>
-          <span>
-            Groups User Belongs to:
+          </div>
+          <div
+            style={{
+              display: "inline-block",
+              position: "absolute",
+              right: "250px",
+              top: "150px",
+            }}
+          >
+            <h2 className="invites-to-groups">Your Groups</h2>
             <GroupsUserBelongsTo
               currentUser={this.props.currentUser}
               groupsAccept={this.state.groupsAccept}
               groupsAdmin={this.state.groupsAdmin}
               routerProps={this.props.routerProps}
             />
-          </span>
+          </div>
+          <div style={{ position: "absolute", top: "475px", left: "275px" }}>
+            <Link to="/create-group">
+              <button className="create-new">Create a New Group</button>
+            </Link>
+          </div>
+          <div className="user-page-gift">
+            <img src="../christmas-presents.png" alt="gift-icon" width={75} />
+          </div>
         </div>
       </div>
     );

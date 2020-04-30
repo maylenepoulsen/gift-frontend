@@ -8,6 +8,19 @@
   width: 1330;
 }
 
+.logout {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  padding: 10px;
+  border: 2px solid #3e6b89; 
+}
+
+.btn {
+  background-color: white;
+  color:  #3e6b89;
+}
+
 .how-it-works {
   position: absolute;
   background: white;
@@ -51,4 +64,98 @@
 
 footer {
   height: 50px;
+}
+
+.glyphicon {
+  color:  #3e6b89;
+}
+
+.create-new {
+  background-color:  #3dd2cc;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+}
+
+.welcome-user {
+  position: absolute;
+  top: 20px;
+  left: 46px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 35px;
+  color: #3e6b89;
+}
+
+.invites-to-groups {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: #122D42;
+  border-bottom: 2px solid #122D42;
+  letter-spacing: 3px;
+  padding: 10px;
+}
+
+.group-invite {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.group-invite li {
+  padding-left: 10px; 
+  text-indent: 3px;
+  line-height: 2.5;
+}
+
+.group-invite li::before {
+  content: "■"; font-family:"Arial Black";
+  color: #3dd2cc; 
+  padding-right: 20px;
+}
+
+.accept {
+  background-color: #3e6b89;
+  border: none;
+  border-radius: 2px;
+  color: white;
+  padding: 1px 1px;
+  text-align: center;
+  display: inline-block;
+  font-size: 15px;
+  width: 75px;
+  margin: 10px;
+}
+
+.decline {
+  background-color: white;
+  color: #3e6b89;
+  border: 2px solid #3e6b89;
+  border-radius: 2px;
+  text-align: center;
+}
+
+.user-page-gift {
+  position: absolute;
+  bottom: 15px;
+  left: 46px;
+}
+
+.home-gift-one {
+  display: inline-block;
+  padding: 5px;
+}
+
+.home-polka-dot {
+  display: inline-block;
+  padding: 5px;
+}
+
+.home-gift-bottle {
+  display: inline-block;
+  padding: 5px;
 }
