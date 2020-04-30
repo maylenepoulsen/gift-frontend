@@ -145,6 +145,56 @@ footer {
   left: 46px;
 }
 
+.group-div {
+  position: absolute;
+  top: 100px;
+  left: 20px;
+}
+
+.group-members-title {
+  color: #3dd2cc;
+  border-bottom: 2px solid #3dd2cc;
+  padding: 5px;
+}
+
+.group-member-ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.post-div {
+  position: absolute;
+  top: 100px;
+  left: 400px;
+}
+
+.post-wrapper {
+  display: grid;
+  grid-template-columns: 300px; 
+  grid-auto-rows: auto;
+  row-gap: 7px;
+}
+
+.single-post {
+  word-wrap: break-word;
+  padding: 3px;
+  border: 1px solid #3dd2cc;
+  border-radius: 3px;
+}
+
+.gift-div {
+  position: absolute;
+  top: 100px;
+  left: 800px;
+}
+
+.delete-group {
+  position: absolute;
+  left: 20px;
+  bottom: 10px;
+}
+
 .home-gift-one {
   display: inline-block;
   padding: 5px;

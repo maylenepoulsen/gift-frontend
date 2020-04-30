@@ -19,8 +19,8 @@ class GiftCard extends Component {
         ))}
         <div>
           <p>
-            <button type="button" class="btn btn-default btn-sm">
-              <span class="glyphicon glyphicon-heart"></span> Like
+            <button type="button" className="btn btn-default btn-sm">
+              <span className="glyphicon glyphicon-heart"></span> Like
             </button>
           </p>
         </div>

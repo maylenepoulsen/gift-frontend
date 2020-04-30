@@ -18,6 +18,7 @@ class Post extends Component {
     const post = {
       body: this.state.post,
       date: now,
+      name: this.props.currentUser.name,
       user_id: this.props.currentUser.id,
       group_id: this.props.group.id,
     };

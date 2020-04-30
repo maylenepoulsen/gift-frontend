@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
 import NavBar from "./components/NavBar";
-import AddGift from './components/AddGift';
-import ShowGiftIdeas from './components/ShowGiftIdeas';
-import Post from './components/Post';
-import ListPosts from './components/ListPosts';
+import AddGift from "./components/AddGift";
+import ShowGiftIdeas from "./components/ShowGiftIdeas";
+import Post from "./components/Post";
+import ListPosts from "./components/ListPosts";
 
 class GroupHomePage extends Component {
   state = {
@@ -12,7 +12,7 @@ class GroupHomePage extends Component {
     members: [],
     recipients: [],
     giftIdeas: [],
-    posts: []
+    posts: [],
   };
 
   componentDidMount() {
@@ -20,29 +20,33 @@ class GroupHomePage extends Component {
     fetch(`http://localhost:3001/api/v1/groups/${id}`)
       .then((response) => response.json())
       .then((result) => {
+  
         this.setState({
           group: result.group,
           members: result.members,
           recipients: result.recipients,
           giftIdeas: result.gifts.flat(),
-          posts: result.posts
+          posts: result.posts,
         });
       });
   }
 
   addGiftToGiftIdeas = (gift) => {
-   this.setState({
-     giftIdeas: [...this.state.giftIdeas, gift]
-   })
-  }
+    this.setState({
+      giftIdeas: [...this.state.giftIdeas, gift],
+    });
+  };
 
   addNewPost = (post) => {
     this.setState({
-      posts: [...this.state.posts, post]
-    })
-  }
+      posts: [...this.state.posts, post],
+    });
+  };
 
   render() {
+    const recipientTitle = this.state.recipients.map(
+      (recipient) => recipient.name
+    );
     return (
       <div>
         <NavBar
@@ -50,39 +54,51 @@ class GroupHomePage extends Component {
           handleLogout={this.props.handleLogout}
           routerProps={this.props.routerProps}
         />
-        This is the Group Home Page for {this.state.group.name}
-        <div>
-          Group Members:
-          <ul>
+        <div className="welcome-user">
+          {this.state.group.name} Group: Group Gift for{" "}
+          {recipientTitle.join(" + ")}
+        </div>
+        <div className="group-div">
+          <h4 className='group-members-title'>Group Members</h4>
+          <ul className='group-member-ul'>
             <li>{this.props.currentUser.name}</li>
             {this.state.members.map((member) => (
               <li key={member.id}>{member.name}</li>
             ))}
           </ul>
         </div>
-        <div>
-          Who we are giving a gift for:
-          <ul>
-            {this.state.recipients.map((recipient) => (
-              <li key={recipient.id}>{recipient.name}</li>
-            ))}
-          </ul>
+        <div className="post-div">
+          <div className='list-posts-div'>
+            <ListPosts posts={this.state.posts} members={this.state.members}/>
+          </div>
+          <div>
+            <Post
+              currentUser={this.props.currentUser}
+              group={this.state.group}
+              addNewPost={this.addNewPost}
+            />
+          </div>
+        </div>
+        <div className='gift-div'>
+          <div>
+            <ShowGiftIdeas
+              gifts={this.state.giftIdeas}
+              recipients={this.state.recipients}
+            />
+          </div>
+          <div>
+            <AddGift
+              recipients={this.state.recipients}
+              addGiftToGiftIdeas={this.addGiftToGiftIdeas}
+            />
+          </div>
         </div>
         <div>
-          <ListPosts posts={this.state.posts}/>
-        </div>
-        <div>
-          <Post currentUser={this.props.currentUser} group={this.state.group}  addNewPost={this.addNewPost} />
-        </div>
-        <div>
-          <AddGift recipients={this.state.recipients} addGiftToGiftIdeas={this.addGiftToGiftIdeas}/>
-        </div>
-        <div>
-          <ShowGiftIdeas gifts={this.state.giftIdeas} recipients={this.state.recipients}/> 
-        </div>
-        <div>
-          {(this.props.currentUser.id === this.state.group.admin_user_id) ? 
-           <button>Delete Group</button> : <div></div>}
+          {this.props.currentUser.id === this.state.group.admin_user_id ? (
+            <button className='delete-group'>Delete Group</button>
+          ) : (
+            <div></div>
+          )}
         </div>
       </div>
     );
