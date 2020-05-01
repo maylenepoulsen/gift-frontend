@@ -33,6 +33,7 @@ class GroupHomePage extends Component {
 
   addGiftToGiftIdeas = (gift) => {
     this.setState({
+      recipients: [...this.state.recipients],
       giftIdeas: [...this.state.giftIdeas, gift],
     });
   };
@@ -47,6 +48,7 @@ class GroupHomePage extends Component {
     const recipientTitle = this.state.recipients.map(
       (recipient) => recipient.name
     );
+    console.log(this.state.members)
     return (
       <div>
         <NavBar

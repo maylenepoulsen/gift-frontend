@@ -15,17 +15,11 @@ class GiftCard extends Component {
             Description: {gift.price}
             Link: {gift.link}
             Notes: {gift.notes}
-          </div>
-        ))}
-        <div>
-          {gifts.length > 0 ? 
-          <p>
             <button type="button" className="btn btn-default btn-sm">
               <span className="glyphicon glyphicon-heart"></span> Like
             </button>
-          </p> : null
-  }
-        </div>
+          </div>
+        ))}
       </div>
     );
   }
