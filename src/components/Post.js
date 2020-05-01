@@ -14,7 +14,7 @@ class Post extends Component {
   handlePostSubmit = (event) => {
     event.preventDefault();
     let now = new Date();
-    
+
     const post = {
       body: this.state.post,
       date: now,
@@ -29,25 +29,25 @@ class Post extends Component {
         Accept: "application/json",
       },
       body: JSON.stringify(post),
-    })
-      this.setState({
-        post: ''
-      })
-      this.props.addNewPost(post)
+    });
+    this.setState({
+      post: "",
+    });
+    this.props.addNewPost(post);
   };
 
   render() {
     return (
       <form>
-        <label>
-          Chat:
-          <textarea
-            name="post"
-            value={this.state.post}
-            onChange={this.handleChange}
-          />
-        </label>
-        <button onClick={this.handlePostSubmit}>Add comment</button>
+        <textarea
+          name="post"
+          className="textarea-post"
+          value={this.state.post}
+          onChange={this.handleChange}
+        />
+        <div>
+          <button className='add-comment' onClick={this.handlePostSubmit}>Add comment</button>
+        </div>
       </form>
     );
   }

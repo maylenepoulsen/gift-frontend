@@ -71,7 +71,7 @@ class GroupHomePage extends Component {
           <div className='list-posts-div'>
             <ListPosts posts={this.state.posts} members={this.state.members}/>
           </div>
-          <div>
+          <div className='add-post-div'>
             <Post
               currentUser={this.props.currentUser}
               group={this.state.group}

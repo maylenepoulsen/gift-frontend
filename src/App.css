@@ -13,7 +13,7 @@
   top: 10px;
   right: 30px;
   padding: 10px;
-  border: 2px solid #3e6b89; 
+  border: 2px solid #3e6b89;
 }
 
 .btn {
@@ -165,7 +165,7 @@ footer {
 
 .post-div {
   position: absolute;
-  top: 100px;
+  top: 115px;
   left: 400px;
 }
 
@@ -181,6 +181,37 @@ footer {
   padding: 3px;
   border: 1px solid #3dd2cc;
   border-radius: 3px;
+}
+
+.post-user {
+  color:  #3e6b89;
+}
+
+.add-post-div {
+  padding-top: 5px;
+}
+
+.textarea-post {
+  width: 300px;
+  height: 100px;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  border: 2px solid #3e6b89;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 16px;
+  resize: none;
+}
+
+.add-comment {
+  float: right;
+	background-color: #3e6b89;
+	border-radius:4px;
+	cursor:pointer;
+	color: white;
+	font-family: 'Roboto', sans-serif;
+	font-size:16px;
+	padding: 5px 11px;
 }
 
 .gift-div {

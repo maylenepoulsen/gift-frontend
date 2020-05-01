@@ -80,6 +80,11 @@ class StartGroup extends Component {
             <select onChange={this.handleSelectDropDown}>
                 <option value='Birthdays'>Birthdays</option>
                 <option value='Baby Shower'>Baby Shower</option>
+                <option value='Holiday'>Holiday</option>
+                <option value='Wedding'>Wedding</option>
+                <option value='Graduation'>Graduation</option>
+                <option value='Classroom/School'>Classroom/School</option>
+                <option value='Other Special Occasion'>Other Special Occasion</option>
             </select>
           </label>
           <div>
