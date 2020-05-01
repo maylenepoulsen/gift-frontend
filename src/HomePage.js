@@ -5,7 +5,7 @@ import Login from "./components/authorization/Login";
 class HomePage extends Component {
   render() {
     return (
-      <div>
+      <div className='header'>
         <header>
           <div className="welcome">Welcome to Group Gift</div>
           <div className="giving">
@@ -30,7 +30,7 @@ class HomePage extends Component {
           <div className="how-it-works"></div>
         </div>
         <footer>
-          <div className="home-gift-one">
+          <span className="home-gift-one">
             <svg
               width="49"
               height="52"
@@ -43,8 +43,8 @@ class HomePage extends Component {
                 fill="#3E6B89"
               />
             </svg>
-          </div>
-          <div className='home-polka-dot'>
+          </span>
+          <span className='home-polka-dot'>
             <svg
               width="39"
               height="75"
@@ -69,8 +69,8 @@ class HomePage extends Component {
                 fill="#3DD2CC"
               />
             </svg>
-          </div>
-          <div className="home-gift-bottle">
+          </span>
+          <span className="home-gift-bottle">
             <svg
               width="29"
               height="70"
@@ -83,7 +83,8 @@ class HomePage extends Component {
                 fill="#3E6B89"
               />
             </svg>
-          </div>
+          </span>
+          <div className='send-a-gift'>Send a Group Gift to family, friends, teachers, coworkers for any occasion</div>
         </footer>
       </div>
     );

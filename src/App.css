@@ -1,10 +1,11 @@
 .background {
   position: relative;
-  background: url("https://images.unsplash.com/photo-1512418490979-92798cec1380?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1330&q=80");
+  background: url("https://images.unsplash.com/photo-1512418490979-92798cec1380?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=&w=1330&q=80");
   object-fit: cover;
   background-repeat: no-repeat;
   left: 0 px;
-  height: 550px;
+  top: 20px;
+  height: 475px;
   width: 1330;
 }
 
@@ -24,10 +25,10 @@
 .how-it-works {
   position: absolute;
   background: white;
-  top: 60px;
+  top: 50px;
   right: 45px;
-  height: 425px;
-  width: 360px;
+  height: 375px;
+  width: 350px;
 }
 
 .home-ul {
@@ -46,16 +47,17 @@
 
 .welcome {
   position: absolute;
-  top: 20px;
-  left: 46px;
+  top: 12px;
+  left: 45px;
   font-family: 'Roboto', sans-serif;
   font-size: 40px;
   color: #3e6b89;
+  padding-bottom: 10px;
 }
 
 .giving {
   position: relative;
-  top: 60px;
+  top: 70px;
   left: 39px;
   font-family: 'Roboto', sans-serif;
   font-size: 27px;
@@ -227,16 +229,32 @@ footer {
 }
 
 .home-gift-one {
-  display: inline-block;
+  position: absolute;
+  bottom: 55px;
+  left: 105px;
   padding: 5px;
+  
 }
 
 .home-polka-dot {
-  display: inline-block;
+  position: absolute;
+  bottom: 55px;
+  left: 170px;
   padding: 5px;
 }
 
 .home-gift-bottle {
-  display: inline-block;
+  position: absolute;
+  bottom: 55px;
+  left: 225px;
   padding: 5px;
+}
+
+.send-a-gift{
+  position: absolute;
+  bottom: 7px;
+  left: 45px;
+  width: 300px;
+  text-align: center;
+  color: #3dd2cc;
 }
