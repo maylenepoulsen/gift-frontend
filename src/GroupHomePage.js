@@ -48,7 +48,7 @@ class GroupHomePage extends Component {
     const recipientTitle = this.state.recipients.map(
       (recipient) => recipient.name
     );
-    console.log(this.state.members)
+  
     return (
       <div>
         <NavBar

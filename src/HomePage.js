@@ -1,30 +1,88 @@
 import React, { Component } from "react";
-import SignUp from "./components/authorization/SignUp";
 import Login from "./components/authorization/Login";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import { Button } from "react-bootstrap";
 
 class HomePage extends Component {
+  state = {
+    showModal: false,
+    form: "",
+  };
+
+  close = () => {
+    this.setState({ showModal: false });
+  };
+
+  open = () => {
+    this.setState({ showModal: true });
+  };
+
+  handleSubmit = (user) => {
+    fetch("http://localhost:3001/api/v1/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.setItem("token", data.jwt);
+        this.props.handleLogin(data.user);
+        this.props.routerProps.history.push(`/users/${data.user.id}`);
+      });
+  };
+
+    handleSubmitSignup = (newUser) => {
+     
+    fetch("http://localhost:3001/api/v1/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(newUser),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.setItem("token", data.jwt);
+        this.props.handleLogin(data.user)
+        this.props.routerProps.history.push(`/users/${data.user.id}`)
+       
+      });
+  };
+
   render() {
     return (
-      <div className='header'>
+      <div className="header">
         <header>
           <div className="welcome">Welcome to Group Gift</div>
           <div className="giving">
             Giving a Group Gift has never been easier!
           </div>
-          <ul className="home-ul">
-            <li className="login-li">
-              <Login
-                handleLogin={this.props.handleLogin}
-                routerProps={this.props.routerProps}
-              />
-            </li>
-            <li className="signup-li">
-              <SignUp
-                handleLogin={this.props.handleLogin}
-                routerProps={this.props.routerProps}
-              />
-            </li>
-          </ul>
+          <div className="get-started-div">
+            <Button
+              type="button"
+              className="btn btn-default btn-lg"
+              onClick={this.open}
+              style={{
+                backgroundColor: "#3dd2cc",
+                border: "#3dd2cc",
+                fontFamily: "Roboto",
+              }}
+            >
+              Get Started
+            </Button>
+            <Login
+              showModal={this.state.showModal}
+              onClose={this.close}
+              handleSubmit={this.handleSubmit}
+              handleSubmitSignup={this.handleSubmitSignup}
+            />
+          </div>
+          <br />
         </header>
         <div className="background">
           <div className="how-it-works"></div>
@@ -44,7 +102,7 @@ class HomePage extends Component {
               />
             </svg>
           </span>
-          <span className='home-polka-dot'>
+          <span className="home-polka-dot">
             <svg
               width="39"
               height="75"
@@ -84,7 +142,10 @@ class HomePage extends Component {
               />
             </svg>
           </span>
-          <div className='send-a-gift'>Send a Group Gift to family, friends, teachers, coworkers for any occasion</div>
+          <div className="send-a-gift">
+            Send a Group Gift to family, friends, teachers, coworkers for any
+            occasion
+          </div>
         </footer>
       </div>
     );
