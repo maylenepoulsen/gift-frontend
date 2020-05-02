@@ -7,7 +7,7 @@ import { Button } from "react-bootstrap";
 class HomePage extends Component {
   state = {
     showModal: false,
-    form: "",
+    // form: "",
   };
 
   close = () => {

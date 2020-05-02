@@ -6,6 +6,8 @@ import ShowGiftIdeas from "./components/ShowGiftIdeas";
 import Post from "./components/Post";
 import ListPosts from "./components/ListPosts";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 class GroupHomePage extends Component {
   state = {
     group: "",
@@ -13,6 +15,15 @@ class GroupHomePage extends Component {
     recipients: [],
     giftIdeas: [],
     posts: [],
+    showModal: false
+  };
+
+  close = () => {
+    this.setState({ showModal: false });
+  };
+
+  open = () => {
+    this.setState({ showModal: true });
   };
 
   componentDidMount() {
@@ -42,6 +53,20 @@ class GroupHomePage extends Component {
     this.setState({
       posts: [...this.state.posts, post],
     });
+  };
+
+  handleAddGift = (gift) => {
+
+   this.addGiftToGiftIdeas(gift);
+
+    fetch("http://localhost:3001/api/v1/gifts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(gift),
+    })
   };
 
   render() {
@@ -89,7 +114,11 @@ class GroupHomePage extends Component {
             />
           </div>
           <div>
+            <button onClick={this.open}>Add A Gift Idea</button>
             <AddGift
+              showModal={this.state.showModal}
+              onClose={this.close}
+              handleAddGift={this.handleAddGift}
               recipients={this.state.recipients}
               addGiftToGiftIdeas={this.addGiftToGiftIdeas}
             />

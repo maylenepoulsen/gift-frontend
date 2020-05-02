@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Modal } from "react-bootstrap";
 
 class AddGift extends Component {
   state = {
@@ -8,6 +9,7 @@ class AddGift extends Component {
     link: "",
     notes: "",
     recipient: "",
+    showModal: false,
   };
 
   handleChange = (event) => {
@@ -16,7 +18,8 @@ class AddGift extends Component {
     });
   };
 
-  handleAddGift = () => {
+  giftAdd = (event) => {
+    event.preventDefault();
     const gift = {
       name: this.state.name,
       price: this.state.price,
@@ -26,28 +29,20 @@ class AddGift extends Component {
       recipient_id: this.state.recipient,
     };
 
-    this.props.addGiftToGiftIdeas(gift)
+    this.props.handleAddGift(gift);
 
-    fetch("http://localhost:3001/api/v1/gifts", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(gift),
-    }).then(
-      this.setState({
-        name: "",
-        price: "",
-        description: "",
-        link: "",
-        notes: "",
-        recipient: "",
-      })
-    );
+    this.setState({
+      name: "",
+      price: "",
+      description: "",
+      link: "",
+      notes: "",
+      recipient: "",
+    });
+    this.props.onClose()
   };
 
-  render() {
+  renderAddGift = () => {
     return (
       <div>
         <div>
@@ -64,7 +59,6 @@ class AddGift extends Component {
             </label>
           ))}
         </div>
-        Add an Idea for a Gift:
         <div>
           <form>
             <label>
@@ -111,8 +105,21 @@ class AddGift extends Component {
               />
             </label>
           </form>
-          <button onClick={this.handleAddGift}>Add this gift idea</button>
+          <button onClick={this.giftAdd}>Add this gift idea</button>
         </div>
+      </div>
+    );
+  };
+
+  render() {
+    return (
+      <div>
+        <Modal show={this.props.showModal} onHide={this.props.onClose}>
+          <Modal.Header closeButton={true} style={{ color: "#3e6b89" }}>
+            <h3>Add A Gift Idea</h3>
+          </Modal.Header>
+          {this.renderAddGift()}
+        </Modal>
       </div>
     );
   }
