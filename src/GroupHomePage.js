@@ -114,7 +114,7 @@ class GroupHomePage extends Component {
             />
           </div>
           <div>
-            <button onClick={this.open}>Add A Gift Idea</button>
+            <button onClick={this.open} className='add-a-gift-idea'>Add A Gift Idea</button>
             <AddGift
               showModal={this.state.showModal}
               onClose={this.close}

@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { faGift } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class GiftCard extends Component {
   render() {
@@ -10,15 +12,17 @@ class GiftCard extends Component {
         Gifts for {this.props.recipient.name}:
         {gifts.map((gift) => (
           <div key={gift.id}>
-            <p>{gift.name}</p>
+             <div>
+              <FontAwesomeIcon icon={faGift} /> {gift.name}
+            </div>
+           
             Price: {gift.price}
             Description: {gift.price}
             Link: {gift.link}
             Notes: {gift.notes}
-            <button type="button" className="btn btn-default btn-sm">
-              <span className="glyphicon glyphicon-heart"></span> Like
-            </button>
+            <div><i class="far fa-heart"></i> 2</div>
           </div>
+         
         ))}
       </div>
     );
