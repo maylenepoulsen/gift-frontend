@@ -1,12 +1,13 @@
 .background {
   position: relative;
-  background: url("https://images.unsplash.com/photo-1512418490979-92798cec1380?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=&w=1330&q=80");
-  object-fit: cover;
+  background: url('./images/leone-venter-mTkXSSScrzw-unsplash.jpg');
+  background-position: left 10px top -160px;
+  background-size: cover;
   background-repeat: no-repeat;
-  left: 0 px;
-  top: 20px;
-  height: 475px;
-  width: 1330;
+  left: 3 px;
+  top: 65px;
+  height: 641px;
+  width: 100%;
 }
 
 
@@ -26,10 +27,10 @@
 .how-it-works {
   position: absolute;
   background: white;
-  top: 50px;
-  right: 45px;
-  height: 375px;
-  width: 350px;
+  top: 55px;
+  left: 1200px;
+  height: 529px;
+  width: 435px;
 }
 
 .home-ul {
@@ -49,7 +50,7 @@
 .welcome {
   position: absolute;
   top: 12px;
-  left: 45px;
+  left: 85px;
   font-family: 'Roboto', sans-serif;
   font-size: 40px;
   color: #3e6b89;
@@ -59,14 +60,17 @@
 .giving {
   position: relative;
   top: 70px;
-  left: 39px;
+  left: 80px;
   font-family: 'Roboto', sans-serif;
   font-size: 27px;
   color: #3dd2cc;
 }
 
 .get-started-div {
-  text-align: center;
+  /* text-align: center; */
+  position: absolute;
+  left: 790px;
+  top: 55px;
 }
 
 footer {
@@ -235,31 +239,142 @@ footer {
 
 .home-gift-one {
   position: absolute;
-  bottom: 55px;
-  left: 105px;
+  bottom: 70px;
+  left: 160px;
   padding: 5px;
   
 }
 
 .home-polka-dot {
   position: absolute;
-  bottom: 55px;
-  left: 170px;
+  bottom: 70px;
+  left: 225px;
   padding: 5px;
 }
 
 .home-gift-bottle {
   position: absolute;
-  bottom: 55px;
-  left: 225px;
+  bottom: 70px;
+  left: 280px;
   padding: 5px;
 }
 
 .send-a-gift{
   position: absolute;
-  bottom: 7px;
-  left: 45px;
-  width: 300px;
+  bottom: 20px;
+  left: 70px;
+  width: 350px;
   text-align: center;
   color: #3dd2cc;
+}
+
+.works {
+  color:  #3e6b89;
+  position: absolute;
+  top: 30px;
+  left: 148px;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.one {
+  position: absolute;
+  top: 100px;
+  left: 25px
+}
+
+.two {
+  position: absolute;
+  top: 250px;
+  left: 25px;
+}
+
+.three {
+  position: absolute;
+  top: 400px;
+  left: 25px;
+}
+
+.start {
+  color: #3dd2cc;
+  position: absolute;
+  top: 80px;
+  left: 70px;
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.account {
+  color: #3e6b89;
+  position: absolute;
+  top: 115px;
+  left: 70px;
+  padding-right: 10px;
+  font-size: 17px;
+}
+
+.contribute {
+  color: #3dd2cc;
+  position: absolute;
+  top: 230px;
+  left: 70px;
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.everyone {
+  color: #3e6b89;
+  position: absolute;
+  top: 265px;
+  left: 70px;
+  padding-right: 10px;
+  font-size: 17px;
+}
+
+.three-title {
+  color: #3dd2cc;
+  position: absolute;
+  top: 385px;
+  left: 70px;
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.three-desc {
+  color: #3e6b89;
+  position: absolute;
+  top: 420px;
+  left: 70px;
+  padding-right: 10px;
+  font-size: 17px;
+}
+
+.poll {
+  position: absolute;
+  bottom: 74px;
+  left: 785px;
+}
+
+.post-gift-ideas {
+  color: #3e6b89;
+  position: absolute;
+  bottom: 20px;
+  left: 685px;
+  width: 300px;
+  text-align: center;
+}
+
+.calculator {
+  position: absolute;
+  bottom: 53px;
+  left: 1400px;
+}
+
+.set-a-budget {
+  color: #3dd2cc;
+  position: absolute;
+  bottom: 20px;
+  left: 1275px;
+  width: 300px;
+  text-align: center;
 }
