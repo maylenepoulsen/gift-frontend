@@ -107,7 +107,7 @@ class UserHomePage extends Component {
             style={{
               display: "inline-block",
               position: "absolute",
-              right: "250px",
+              right: "350px",
               top: "150px",
             }}
           >
@@ -119,7 +119,7 @@ class UserHomePage extends Component {
               routerProps={this.props.routerProps}
             />
           </div>
-          <div style={{ position: "absolute", top: "475px", left: "275px" }}>
+          <div className='new-group-button'>
             <Link to="/create-group">
               <button className="create-new">Create a New Group</button>
             </Link>
