@@ -28,7 +28,12 @@ class GroupHomePage extends Component {
 
   componentDidMount() {
     const id = this.props.routerProps.match.params.id;
-    fetch(`http://localhost:3001/api/v1/groups/${id}`)
+    fetch(`http://localhost:3001/api/v1/groups/${id}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    })
       .then((response) => response.json())
       .then((result) => {
   
@@ -64,6 +69,7 @@ class GroupHomePage extends Component {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
       },
       body: JSON.stringify(gift),
     })

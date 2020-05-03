@@ -13,8 +13,14 @@ class UserHomePage extends Component {
   };
 
   componentDidMount() {
+    
     const user_id = this.props.currentUser.id;
-    fetch(`http://localhost:3001/api/v1/invites/${user_id}`)
+    fetch(`http://localhost:3001/api/v1/invites/${user_id}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    })
       .then((response) => response.json())
       .then((data) => {
         this.setState({
@@ -37,6 +43,7 @@ class UserHomePage extends Component {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
       },
       body: JSON.stringify({ status: "accept" }),
     })
@@ -62,6 +69,11 @@ class UserHomePage extends Component {
 
     fetch(`http://localhost:3001/api/v1/user_groups/${userGroupIdToDelete}`, {
       method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      },
     });
 
     const newPending = this.state.groupsPending.filter(

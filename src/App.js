@@ -13,8 +13,8 @@ class App extends Component {
     auth: { currentUser: {} },
   };
 
-  handleLogin = (user) => {
-    const currentUser = { currentUser: user };
+  handleLogin = (data) => {
+    const currentUser = { currentUser: data.user};
     this.setState({ auth: currentUser });
   };
 
