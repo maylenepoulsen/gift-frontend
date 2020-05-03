@@ -7,7 +7,7 @@ class AddGift extends Component {
     price: "",
     description: "",
     link: "",
-    notes: "",
+    notes: 'notes',
     recipient: "",
     showModal: false,
   };
@@ -36,7 +36,6 @@ class AddGift extends Component {
       price: "",
       description: "",
       link: "",
-      notes: "",
       recipient: "",
     });
     this.props.onClose()
@@ -93,14 +92,6 @@ class AddGift extends Component {
                 type="text"
                 name="link"
                 value={this.state.link}
-                onChange={this.handleChange}
-              />
-            </label>
-            <label>
-              Notes:
-              <textarea
-                name="notes"
-                value={this.state.notes}
                 onChange={this.handleChange}
               />
             </label>

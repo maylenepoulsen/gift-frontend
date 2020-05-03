@@ -412,3 +412,37 @@ footer {
   color: #3dd2cc;
   font-size: 25px;
 }
+
+.fas {
+  color: #3dd2cc;
+  font-size: 25px;
+}
+
+.gifts-for {
+  border-bottom: 1px solid #3e6b89;
+  color: #3e6b89;
+  text-align: center;
+  padding: 10px;
+}
+
+.gift-name {
+  position: "relative";
+  margin-left: 15px;
+  font-size: 20px;
+}
+
+.gift-price {
+  float: right;
+  margin-right: 10px;
+}
+
+.like-gift {
+  position: "relative";
+  padding-top: 10px;
+  padding-left: 30px;
+}
+
+.likes-text {
+  font-size: 20px;
+  margin-left: 10px;
+}

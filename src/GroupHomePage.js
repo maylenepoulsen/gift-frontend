@@ -111,6 +111,7 @@ class GroupHomePage extends Component {
             <ShowGiftIdeas
               gifts={this.state.giftIdeas}
               recipients={this.state.recipients}
+              currentUser={this.props.currentUser}
             />
           </div>
           <div>
