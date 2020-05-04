@@ -30,7 +30,7 @@ class AddGift extends Component {
     };
 
     this.props.handleAddGift(gift);
-
+    
     this.setState({
       name: "",
       price: "",

@@ -47,13 +47,6 @@ class GroupHomePage extends Component {
       });
   }
 
-  addGiftToGiftIdeas = (gift) => {
-    this.setState({
-      recipients: [...this.state.recipients],
-      giftIdeas: [...this.state.giftIdeas, gift],
-    });
-  };
-
   addNewPost = (post) => {
     this.setState({
       posts: [...this.state.posts, post],
@@ -61,9 +54,6 @@ class GroupHomePage extends Component {
   };
 
   handleAddGift = (gift) => {
-
-   this.addGiftToGiftIdeas(gift);
-
     fetch("http://localhost:3001/api/v1/gifts", {
       method: "POST",
       headers: {
@@ -73,9 +63,18 @@ class GroupHomePage extends Component {
       },
       body: JSON.stringify(gift),
     })
+    .then(response => response.json())
+    .then(result => {
+      console.log(result)
+      this.setState({
+        recipients: [...this.state.recipients],
+        giftIdeas: [...this.state.giftIdeas, result]
+      })
+    })
   };
 
   render() {
+    console.log('running render')
     const recipientTitle = this.state.recipients.map(
       (recipient) => recipient.name
     );

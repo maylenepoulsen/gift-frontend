@@ -125,7 +125,7 @@ class Login extends Component {
           </form>
         </div>
         <a
-          href="#"
+          href="!#"
           alt="login"
           onClick={(e) => {
             e.preventDefault();
@@ -202,7 +202,7 @@ class Login extends Component {
           </div>
         </form>
         <a
-          href="#"
+          href="!#"
           alt="signup"
           onClick={(e) => {
             e.preventDefault();
