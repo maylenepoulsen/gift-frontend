@@ -36,7 +36,7 @@ class GroupHomePage extends Component {
     })
       .then((response) => response.json())
       .then((result) => {
-  
+        console.log(result)
         this.setState({
           group: result.group,
           members: result.members,
@@ -74,11 +74,11 @@ class GroupHomePage extends Component {
   };
 
   render() {
-    console.log('running render')
     const recipientTitle = this.state.recipients.map(
       (recipient) => recipient.name
     );
-  
+    console.log('recipientTitle', recipientTitle)
+
     return (
       <div>
         <NavBar

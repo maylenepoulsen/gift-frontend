@@ -11,7 +11,7 @@ class CreateGroup extends Component {
           handleLogout={this.props.handleLogout}
           routerProps={this.props.routerProps}
         />
-        <h2>This is the Page to Create A Group</h2>
+        <div className='create-group-title'>Create A Group</div>
         <div>
           <StartGroup
             currentUser={this.props.currentUser}

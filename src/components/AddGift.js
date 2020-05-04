@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Modal } from "react-bootstrap";
+import { Modal, Form } from "react-bootstrap";
 
 class AddGift extends Component {
   state = {
@@ -43,9 +43,9 @@ class AddGift extends Component {
 
   renderAddGift = () => {
     return (
-      <div>
+      <div className='add-gift-mod'>
         <div>
-          Choose a recipient:
+         <span className='choose-recipient'>Choose a recipient:</span>
           {this.props.recipients.map((recipient) => (
             <label key={recipient.id}>
               <input
@@ -54,23 +54,24 @@ class AddGift extends Component {
                 name="recipient"
                 onChange={this.handleChange}
               />
-              {recipient.name}
+              <span className='radio-recipient'>{recipient.name}</span>
             </label>
           ))}
         </div>
         <div>
           <form>
+            <Form.Group>
+              Gift Idea
+              <Form.Control
+              type="text"
+              name="name"
+              value={this.state.name}
+              onChange={this.handleChange}
+              >  
+              </Form.Control>
+            </Form.Group>
             <label>
-              Gift Idea:
-              <input
-                type="text"
-                name="name"
-                value={this.state.name}
-                onChange={this.handleChange}
-              />
-            </label>
-            <label>
-              Price:
+              <span style={{paddingRight: '10px'}}>Price</span>
               <input
                 type="number"
                 name="price"
@@ -79,24 +80,26 @@ class AddGift extends Component {
               />
             </label>
             <label>
-              Gift Description:
+              Gift Description
               <textarea
                 name="description"
+                className='add-gift-description'
                 value={this.state.description}
                 onChange={this.handleChange}
               />
             </label>
-            <label>
-              Link to gift:
-              <input
-                type="text"
-                name="link"
-                value={this.state.link}
-                onChange={this.handleChange}
-              />
-            </label>
+            <Form.Group>
+              Link to Gift
+              <Form.Control
+               type="text"
+               name="link"
+               value={this.state.link}
+               onChange={this.handleChange}
+              >
+              </Form.Control>
+            </Form.Group>
           </form>
-          <button onClick={this.giftAdd}>Add this gift idea</button>
+          <button className='gift-btn-mod' onClick={this.giftAdd}>Add Gift</button>
         </div>
       </div>
     );

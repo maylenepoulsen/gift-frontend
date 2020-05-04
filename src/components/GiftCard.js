@@ -92,7 +92,7 @@ class GiftCard extends Component {
     }
 
     return (
-      <div>
+      <div className='display-gift-card'>
         <div>
           <span>
             <FontAwesomeIcon icon={faGift} style={{ color: "#3dd2cc" }} />
@@ -103,7 +103,7 @@ class GiftCard extends Component {
         <div className="gift-description">
           Description: {this.props.gift.description}
         </div>
-        <div>Link: {this.props.gift.link}</div>
+    <div><a href={this.props.gift.link} target='_blank' rel="noopener noreferrer">{this.props.gift.name}</a></div>
         <div className="like-gift">
           <span onClick={this.handleLikeClick}>
             {this.state.heartState ? (

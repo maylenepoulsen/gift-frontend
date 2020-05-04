@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { faGift } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class StartGroup extends Component {
   state = {
@@ -23,9 +25,9 @@ class StartGroup extends Component {
 
   handleSelectDropDown = (event) => {
     this.setState({
-        eventName: event.target.value
-    })
-  }
+      eventName: event.target.value,
+    });
+  };
 
   handleAddMember = (event) => {
     event.preventDefault();
@@ -52,63 +54,74 @@ class StartGroup extends Component {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify(group),
     })
-    .then(response => response.json())
-    .then(result => {
-      this.props.routerProps.history.push(`/add-recipient/group/${result.id}`)
-    })
-    ;
+      .then((response) => response.json())
+      .then((result) => {
+        this.props.routerProps.history.push(
+          `/add-recipient/group/${result.id}`
+        );
+      });
   };
 
   render() {
     return (
       <div>
+         <div className='directions'><span>
+            <FontAwesomeIcon icon={faGift} style={{ color: "#3e6b89", marginRight: '10px'}} />
+          </span>Once you have added members to your group, you can click to add one or more recipients to give a group gift to.</div>
         <form>
-          <label>
-            Enter a name for your new Group:
+          <label className="enter-name">
+            Enter a name for your new Group
             <input
               type="text"
+              className="group-name"
               name="name"
               value={this.state.name}
               onChange={this.handleChange}
             />
           </label>
-          <label>
-            Select an Event Type this group will be participating in:
-            <select onChange={this.handleSelectDropDown}>
-                <option value='Birthdays'>Birthdays</option>
-                <option value='Baby Shower'>Baby Shower</option>
-                <option value='Holiday'>Holiday</option>
-                <option value='Wedding'>Wedding</option>
-                <option value='Graduation'>Graduation</option>
-                <option value='Classroom/School'>Classroom/School</option>
-                <option value='Other Special Occasion'>Other Special Occasion</option>
+          <label className="select-event">
+            Select an Event type for this Group
+            <select onChange={this.handleSelectDropDown} className="dropdown">
+              <option value="Birthdays">Birthdays</option>
+              <option value="Baby Shower">Baby Shower</option>
+              <option value="Holiday">Holiday</option>
+              <option value="Wedding">Wedding</option>
+              <option value="Graduation">Graduation</option>
+              <option value="Classroom/School">Classroom/School</option>
+              <option value="Other Special Occasion">
+                Other Special Occasion
+              </option>
             </select>
           </label>
           <div>
             <div>
-              <ul>
+              <ul className='create-group'>
                 {this.state.members.map((member, idx) => (
                   <li key={idx}>{member}</li>
                 ))}
               </ul>
             </div>
-            <label>
-              Add members to your group:
+            <label className='add-members'>
+              Add members to your group
               <input
                 type="text"
+                className='group-member'
                 name="newMember"
                 value={this.state.newMember}
                 onChange={this.handleChange}
               />
             </label>
-            <button onClick={this.handleAddMember}>Add to group</button>
+            <button className='add-btn' onClick={this.handleAddMember}>Add to group</button>
           </div>
-          <button onClick={this.handleSubmit}>Create Group</button>
+          <button className='create-group-btn' onClick={this.handleSubmit}>Add A Recipient</button>
         </form>
+        <div className="create-page-gift">
+            <img src="../christmas-presents.png" alt="gift-icon" width={130} />
+          </div>
       </div>
     );
   }

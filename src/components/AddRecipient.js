@@ -16,10 +16,10 @@ class AddRecipient extends Component {
   componentDidMount() {
     const id = this.props.routerProps.match.params.id;
     fetch(`http://localhost:3001/api/v1/groups/${id}`, {
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
-      }
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
     })
       .then((response) => response.json())
       .then((result) => {
@@ -77,17 +77,19 @@ class AddRecipient extends Component {
       recipients: [...this.state.recipients, person],
     };
 
-    fetch('http://localhost:3001/api/v1/recipients', {
+    fetch("http://localhost:3001/api/v1/recipients", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify(recipients),
     })
       .then((response) => response.json())
-      .then(this.props.routerProps.history.push(`/groups/${this.state.group.id}`));
+      .then(
+        this.props.routerProps.history.push(`/groups/${this.state.group.id}`)
+      );
   };
 
   render() {
@@ -98,81 +100,89 @@ class AddRecipient extends Component {
           handleLogout={this.props.handleLogout}
           routerProps={this.props.routerProps}
         />
-        <div>Group: {this.state.group.name}</div>
+        <div className='add-recipient-group-name'>Group: {this.state.group.name}</div>
         {this.state.recipients.length > 0 ? (
           this.state.recipients.map((recipient, idx) => (
-            <div key={idx}>
-              <p>{recipient.recipient}</p>
-              <p>{recipient.eventDate}</p>
-              <p>{recipient.relationship}</p>
-              <p>{recipient.budget}</p>
-              <p>{recipient.interests}</p>
-              <p>{recipient.notes}</p>
+            <div key={idx} className='added-recipient'>
+              <p className='name'>{recipient.recipient}</p>
+              <p className='date'>{recipient.eventDate}</p>
+              <p className='relationship'>{recipient.relationship}</p>
+              <p className='budget'>{recipient.budget}</p>
+              <p className='interests'>{recipient.interests}</p>
+              <p className='notes'>{recipient.notes}</p>
             </div>
           ))
         ) : (
           <div></div>
         )}
-        <form>
-          <label>
-            Who is this gift for?
-            <input
-              type="text"
-              name="recipient"
-              value={this.state.recipient}
-              onChange={this.handleChange}
-            />
-          </label>
-          <label>
-            Enter a date of the event
-            <input
-              type="text"
-              name="eventDate"
-              value={this.state.eventDate}
-              onChange={this.handleChange}
-            />
-          </label>
-          <label>
-            How is this recipient related to your group?
-            <input
-              type="text"
-              name="relationship"
-              value={this.state.relationship}
-              onChange={this.handleChange}
-            />
-          </label>
-          <label>
-            Budget for group gift
-            <input
-              type="number"
-              name="budget"
-              value={this.state.budget}
-              onChange={this.handleChange}
-            />
-          </label>
-          <label>
-            List any special interests or hobbies this person has
-            <textarea
-              name="interests"
-              value={this.state.interests}
-              onChange={this.handleChange}
-            />
-          </label>
-          <label>
-            Notes
-            <textarea
-              name="notes"
-              value={this.state.notes}
-              onChange={this.handleChange}
-            />
-          </label>
-        </form>
-        <button onClick={this.handleAddAnotherRecipient}>
-          Add another recipient
-        </button>
-        <button onClick={this.handleSubmitRecipients}>
-          Add Recipient(s) to Group
-        </button>
+        <div className='form-recipient'>
+          <form>
+            <label className='who'>
+              Who is this gift for?
+              <input
+                type="text"
+                className='who'
+                name="recipient"
+                value={this.state.recipient}
+                onChange={this.handleChange}
+              />
+            </label>
+            <label className='date'>
+              Enter a date of the event
+              <input
+                type="text"
+                className='date'
+                name="eventDate"
+                value={this.state.eventDate}
+                onChange={this.handleChange}
+              />
+            </label>
+            <label className='related'>
+              How is this recipient related to your group?
+              <input
+                type="text"
+                className='related'
+                name="relationship"
+                value={this.state.relationship}
+                onChange={this.handleChange}
+              />
+            </label>
+            <label className='budget'>
+              Budget for group gift
+              <input
+                type="number"
+                className='budget'
+                name="budget"
+                value={this.state.budget}
+                onChange={this.handleChange}
+              />
+            </label>
+            <label className='hobbies'>
+              List any special interests or hobbies this person has
+              <textarea
+                name="interests"
+                className='hobbies'
+                value={this.state.interests}
+                onChange={this.handleChange}
+              />
+            </label>
+            <label className='add-recipient-notes'>
+              Notes
+              <textarea
+                name="notes"
+                className='add-recipient-notes'
+                value={this.state.notes}
+                onChange={this.handleChange}
+              />
+            </label>
+          </form>
+          <button onClick={this.handleAddAnotherRecipient} className='add-another'>
+            Add another recipient
+          </button>
+          <button onClick={this.handleSubmitRecipients} className='submit-recipient'>
+            Add Recipient(s) to Group
+          </button>
+        </div>
       </div>
     );
   }

@@ -66,7 +66,6 @@
 }
 
 .get-started-div {
-  /* text-align: center; */
   position: absolute;
   left: 790px;
   top: 55px;
@@ -189,7 +188,7 @@ footer {
 .post-div {
   position: absolute;
   top: 150px;
-  left: 500px;
+  left: 550px;
 }
 
 .post-wrapper {
@@ -445,4 +444,302 @@ footer {
 .likes-text {
   font-size: 20px;
   margin-left: 10px;
+}
+
+.add-gift-mod {
+  padding: 25px;
+}
+
+.choose-recipient {
+  padding-right: 7px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.radio-recipient {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 20px;
+}
+
+.add-gift-description {
+  width: 100%;
+  height: 100px;
+  padding: 8px 20px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: none;
+}
+
+.gift-btn-mod {
+  background-color: #3e6b89;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 12px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+}
+a {
+  margin-left: 30px;
+}
+a:link {
+  color:#3e6b89;
+}
+
+a:visited {
+  color: #3dd2cc;
+}
+
+.gift-description {
+  width: 550px;
+  margin-left: 30px;
+}
+
+.display-gift-card {
+  padding: 15px
+}
+
+.create-group-title {
+  color: #3e6b89;
+  font-family: "Roboto", sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  position: 'absolute';
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #3e6b89;
+}
+
+.enter-name {
+  font-size: 20px;
+  padding-left: 50px;
+  padding-top: 30px;
+}
+
+input.group-name {
+  margin-left: 10px;
+  width: 450px;
+  font-size: 20px;
+}
+
+.dropdown {
+  font-size: 20px;
+  background-color: white;
+  margin-left: 10px;
+}
+
+.select-event {
+  font-size: 20px;
+  padding-left: 70px;
+}
+
+.add-members {
+  font-size: 20px;
+  padding-left: 50px;
+  padding-top: 30px;
+}
+
+input.group-member {
+  margin-left: 10px;
+  width: 300px;
+  font-size: 20px;
+}
+
+.add-btn {
+  color: #3e6b89;
+  background-color: white;
+  border: 1px solid #3e6b89;
+  border-radius: 2px;
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+ul.create-group {
+  position: 'relative';
+  margin-left: 100px;
+  list-style-type: none
+}
+
+.create-group li {
+  text-indent: 3px;
+  line-height: 2;
+  font-size: 20px;
+}
+
+.create-group li::before {
+  content: "■";
+  font-family: "Arial Black";
+  color: #3dd2cc;
+  padding-right: 20px;
+}
+
+.create-group-btn {
+  position: absolute;
+  top: 400px;
+  left: 1000px;
+  background-color: white;
+  border: 2px solid #3e6b89;
+  color: #3e6b89;
+  padding: 32px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.create-group-btn:hover {
+  background-color: #3e6b89;
+  color: white;
+}
+
+.directions {
+  width: 300px;
+  position: absolute;
+  top: 300px;
+  text-align: center;
+  left: 965px;
+}
+
+.create-page-gift {
+  position: absolute;
+  bottom: 15px;
+  left: 46px;
+}
+
+.add-recipient-group-name {
+  position: absolute;
+  top: 20px;
+  left: 60px;
+  font-family: "Roboto", sans-serif;
+  font-size: 45px;
+  font-weight: 300;
+  color: #3e6b89;
+}
+
+.added-recipient {
+
+}
+
+p.name {
+
+}
+
+p.date {
+
+}
+
+p.relationship {
+
+}
+
+p.budget {
+
+}
+
+p.interests {
+
+}
+
+p.notes {
+
+}
+
+.form-recipient {
+  position: relative;
+  top: 200px;
+  padding-left: 20px;
+}
+
+label.who {
+  font-size: 20px;
+  padding-left: 50px;
+  padding-top: 30px;
+}
+
+input.who {
+  margin-left: 10px;
+  width: 300px;
+  font-size: 20px;
+}
+
+label.date {
+  font-size: 20px;
+  padding-left: 50px;
+  padding-top: 30px;
+}
+
+input.date {
+  margin-left: 10px;
+  width: 200px;
+  font-size: 20px;
+}
+
+label.related {
+  font-size: 20px;
+  padding-left: 50px;
+  padding-top: 30px;
+}
+
+input.related {
+  margin-left: 10px;
+  width: 200px;
+  font-size: 20px;
+}
+
+label.budget {
+  font-size: 20px;
+  padding-left: 50px;
+  padding-top: 30px;
+}
+
+input.budget {
+  margin-left: 10px;
+  width: 200px;
+  font-size: 20px;
+}
+
+label.hobbies {
+  font-size: 20px;
+  padding-left: 50px;
+  padding-top: 30px;
+}
+
+input.hobbies {
+  width: 300px;
+  height: 100px;
+  padding: 8px 20px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: none;
+}
+
+label.add-recipient-notes {
+  font-size: 20px;
+  padding-left: 50px;
+  padding-top: 30px;
+}
+
+input.add-recipient-notes {
+  width: 300px;
+  height: 100px;
+  padding: 8px 20px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: none;
+}
+
+.add-another {
+
+}
+
+.submit-recipient {
+
 }

@@ -7,7 +7,6 @@ import { Button } from "react-bootstrap";
 class HomePage extends Component {
   state = {
     showModal: false,
-    // form: "",
   };
 
   close = () => {
@@ -129,9 +128,9 @@ class HomePage extends Component {
                 />
               </svg>
             </div>
-            <div className="three-title">Something for three</div>
+            <div className="three-title">Send the Gift</div>
             <div className="three-desc">
-              Need to think of a good description for the last step this long
+              Split the cost between group members for the selected gifts
             </div>
             <div className="three">
               <svg
