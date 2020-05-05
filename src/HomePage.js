@@ -42,6 +42,7 @@ class HomePage extends Component {
   };
 
   handleSubmitSignup = (newUser) => {
+    
     fetch("http://localhost:3001/api/v1/users", {
       method: "POST",
       headers: {
@@ -53,7 +54,7 @@ class HomePage extends Component {
       .then((response) => response.json())
       .then((data) => {
         localStorage.setItem("token", data.jwt);
-        this.props.handleLogin(data.user);
+        this.props.handleLogin(data);
         this.props.routerProps.history.push(`/users/${data.user.id}`);
       });
   };
