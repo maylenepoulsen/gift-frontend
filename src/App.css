@@ -804,3 +804,20 @@ label.add-recipient-notes {
   position: absolute;
   top: 100px;
 }
+
+.budget-for-gifts {
+  position: absolute;
+  top: 130px;
+  left: 1000px;
+  font-size: 20px;
+  border-style: double;
+  padding: 10px 20px;
+  border-color: #3dd2cc;
+  border-radius: 4px;
+}
+
+.error {
+  position: absolute;
+  left: 700px;
+  top: 5px
+}

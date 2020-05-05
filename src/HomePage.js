@@ -7,6 +7,7 @@ import { Button } from "react-bootstrap";
 class HomePage extends Component {
   state = {
     showModal: false,
+    message: false
   };
 
   close = () => {
@@ -28,9 +29,15 @@ class HomePage extends Component {
     })
       .then((response) => response.json())
       .then((data) => {
+        if(data.message) {
+          this.setState({
+            message: !this.state.message
+          })
+        } else {
         localStorage.setItem("token", data.jwt);
         this.props.handleLogin(data);
         this.props.routerProps.history.push(`/users/${data.user.id}`);
+        }
       });
   };
 
@@ -59,6 +66,7 @@ class HomePage extends Component {
           <div className="giving">
             Giving a Group Gift has never been easier!
           </div>
+          {this.state.message? <h5 className='error'>Email or password is invalid</h5> : null}
           <div className="get-started-div">
             <Button
               type="button"

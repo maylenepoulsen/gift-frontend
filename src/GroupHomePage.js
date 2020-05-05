@@ -36,7 +36,6 @@ class GroupHomePage extends Component {
     })
       .then((response) => response.json())
       .then((result) => {
-        console.log(result)
         this.setState({
           group: result.group,
           members: result.members,
@@ -65,7 +64,6 @@ class GroupHomePage extends Component {
     })
     .then(response => response.json())
     .then(result => {
-      console.log(result)
       this.setState({
         recipients: [...this.state.recipients],
         giftIdeas: [...this.state.giftIdeas, result]
@@ -77,7 +75,14 @@ class GroupHomePage extends Component {
     const recipientTitle = this.state.recipients.map(
       (recipient) => recipient.name
     );
-    console.log('recipientTitle', recipientTitle)
+
+    let recipientBudget = this.state.recipients.map((recipient) => recipient.budget)
+    const reducer = (accumulator, currentValue) => accumulator + currentValue
+    let amount = 0;
+    if(recipientBudget.length > 0) {
+      amount = recipientBudget.reduce(reducer)
+    }
+
 
     return (
       <div>
@@ -90,6 +95,7 @@ class GroupHomePage extends Component {
           {this.state.group.name} Group: Group Gift for{" "}
           {recipientTitle.join(" + ")}
         </div>
+        <div className='budget-for-gifts'>Budget for gifts: {`$${amount}`}</div>
         <div className="group-div">
           <h4 className='group-members-title'>Group Members</h4>
           <ul className='group-member-ul'>
