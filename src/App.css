@@ -251,6 +251,15 @@ footer {
   position: absolute;
   left: 20px;
   bottom: 10px;
+
+  background-color: white;
+  border: 1px solid #3dd2cc;
+  border-radius: 2px;
+  color: #3dd2cc;
+  padding: 5px 5px;
+  text-align: center;
+  display: inline-block;
+  font-size: 15px;
 }
 
 .home-gift-one {
@@ -825,4 +834,26 @@ label.add-recipient-notes {
   position: absolute;
   left: 700px;
   top: 5px
+}
+
+.group-svg {
+  position: relative;
+  left: 645px;
+  top: 825px;
+}
+
+.group-svg-one {
+  position: relative;
+  right: 100px; 
+}
+
+.group-svg-two {
+  position: relative;
+  bottom: 106px
+}
+
+.group-svg-three {
+  position: relative;
+  bottom: 207px;
+  left: 80px;
 }
