@@ -623,31 +623,43 @@ ul.create-group {
 }
 
 .added-recipient {
-
+  position: relative;
+  left: 60px;
+  top: 170px;
 }
 
-p.name {
-
+span.name {
+  position: relative;
+  font-size: 20px;
 }
 
-p.date {
-
+span.date {
+  position: relative;
+  left: 20px;
 }
 
-p.relationship {
-
+span.relationship {
+  position: relative;
+  left: 80px;
 }
 
-p.budget {
-
+div.budget {
+  position: relative;
+  left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
-p.interests {
-
+div.interests {
+  position: relative;
+  left: 10px;
+  width: 300px;
+  padding-bottom: 10px;
 }
 
-p.notes {
-
+div.notes {
+  position: relative;
+  left: 10px;
 }
 
 .form-recipient {
@@ -710,12 +722,14 @@ label.hobbies {
   padding-top: 30px;
 }
 
-input.hobbies {
-  width: 300px;
-  height: 100px;
-  padding: 8px 20px;
+.hobbies {
+  width: 450px;
+  height: 70px;
+  padding: 8px 10px;
+  margin-right: 40px;
+  margin-bottom: 0px;
   box-sizing: border-box;
-  border: 1px solid #ccc;
+  border-color: #ccc;
   border-radius: 4px;
   resize: none;
 }
@@ -726,20 +740,67 @@ label.add-recipient-notes {
   padding-top: 30px;
 }
 
-input.add-recipient-notes {
+.add-recipient-notes {
   width: 300px;
-  height: 100px;
-  padding: 8px 20px;
+  height: 70px;
+  padding: 8px 15px;
   box-sizing: border-box;
-  border: 1px solid #ccc;
+  border-color: #ccc;
   border-radius: 4px;
   resize: none;
 }
 
 .add-another {
-
+  background-color: white; 
+  border: 2px solid #3e6b89;
+  border-radius: 4px;
+  color: #3e6b89;
+  padding: 15px 25px;
+  text-align: center;
+  display: inline-block;
+  font-size: 20px;
+  position: relative;
+  top: 20px;
+  left: 60px;
 }
 
 .submit-recipient {
+  background-color: white; 
+  border: 2px solid #3e6b89;
+  border-radius: 4px;
+  color: #3e6b89;
+  padding: 32px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+  top: 20px;
+  left: 800px;
+}
 
+.submit-recipient:hover {
+  background-color: #3e6b89;
+  color: white;
+}
+
+.recipient-page-gift{
+  position: absolute;
+  bottom: 15px;
+  left: 46px;
+}
+
+.add-another-directions {
+  position: relative;
+  top: 15px;
+  width: 300px;
+  left: 40px;
+  text-align: center;
+}
+
+.directions-page-recipient {
+  width: 570px;
+  left: 60px;
+  position: absolute;
+  top: 100px;
 }

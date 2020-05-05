@@ -101,15 +101,16 @@ class AddRecipient extends Component {
           routerProps={this.props.routerProps}
         />
         <div className='add-recipient-group-name'>Group: {this.state.group.name}</div>
+        <div className='directions-page-recipient'>Add at least one recipient that your group will be giving a gift to.  You can add more than one person in the name input-field or add each person individually.</div>
         {this.state.recipients.length > 0 ? (
           this.state.recipients.map((recipient, idx) => (
             <div key={idx} className='added-recipient'>
-              <p className='name'>{recipient.recipient}</p>
-              <p className='date'>{recipient.eventDate}</p>
-              <p className='relationship'>{recipient.relationship}</p>
-              <p className='budget'>{recipient.budget}</p>
-              <p className='interests'>{recipient.interests}</p>
-              <p className='notes'>{recipient.notes}</p>
+              <span className='name'>{recipient.recipient}</span>
+              <span className='date'>Date of Event: {recipient.eventDate}</span>
+              <span className='relationship'>Related: {recipient.relationship}</span>
+              <div className='budget'>Budget: {recipient.budget}</div>
+              <div className='interests'>{recipient.interests}</div>
+              <div className='notes'>{recipient.notes}</div>
             </div>
           ))
         ) : (
@@ -158,7 +159,7 @@ class AddRecipient extends Component {
               />
             </label>
             <label className='hobbies'>
-              List any special interests or hobbies this person has
+              List any interests or hobbies this person has
               <textarea
                 name="interests"
                 className='hobbies'
@@ -176,6 +177,7 @@ class AddRecipient extends Component {
               />
             </label>
           </form>
+          <div className='add-another-directions'>If you would like to add another recipient for this group click below</div>
           <button onClick={this.handleAddAnotherRecipient} className='add-another'>
             Add another recipient
           </button>
@@ -183,6 +185,9 @@ class AddRecipient extends Component {
             Add Recipient(s) to Group
           </button>
         </div>
+        <div className="recipient-page-gift">
+            <img src="../../christmas-presents.png" alt="gift-icon" width={130} />
+          </div>
       </div>
     );
   }
