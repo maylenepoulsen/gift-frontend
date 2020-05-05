@@ -16,6 +16,8 @@ class GroupHomePage extends Component {
     giftIdeas: [],
     posts: [],
     admin: "",
+    category: '',
+    date: '',
     showModal: false,
   };
 
@@ -37,9 +39,13 @@ class GroupHomePage extends Component {
     })
       .then((response) => response.json())
       .then((result) => {
+        const date = this.getDate(result.recipients)
+
         this.setState({
           group: result.group,
           admin: result.admin,
+          date: date,
+          category: result.category,
           members: result.members,
           recipients: result.recipients,
           giftIdeas: result.gifts.flat(),
@@ -73,6 +79,14 @@ class GroupHomePage extends Component {
       });
   };
 
+  getDate = (recipients) => {
+    let recipient = recipients[0]
+    let date = recipient.event_date
+    let split = date.split('-')
+    split.push(split.shift())
+    return split.join('/')
+  }
+
   render() {
     const recipientTitle = this.state.recipients.map(
       (recipient) => recipient.name
@@ -96,7 +110,7 @@ class GroupHomePage extends Component {
         />
         <div className="welcome-user">
           {this.state.group.name} Group: Group Gift for{" "}
-          {recipientTitle.join(" + ")}
+    {recipientTitle.join(" + ")}<div className='category'>Event: {this.state.category}<span className='event-date'>Date: {this.state.date}</span></div>
         </div>
         <div className="budget-for-gifts">Budget for gifts: {`$${amount}`}</div>
         <div className="group-div">

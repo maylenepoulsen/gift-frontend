@@ -97,7 +97,7 @@ footer {
   top: 20px;
   left: 60px;
   font-family: "Roboto", sans-serif;
-  font-size: 50px;
+  font-size: 45px;
   font-weight: 300;
   color: #3e6b89;
 }
@@ -861,4 +861,14 @@ label.add-recipient-notes {
   position: relative;
   bottom: 207px;
   left: 80px;
+}
+
+.category {
+  font-size: 25px;
+  left: 40px;
+  font-family: fantasy;
+}
+
+.event-date {
+  padding-left: 50px;
 }
