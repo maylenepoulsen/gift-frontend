@@ -421,6 +421,11 @@ footer {
   padding: 20px 40px;
 }
 
+.add-a-gift-idea:hover {
+  background-color: #3dd2cc;
+  color: white;
+}
+
 .far {
   color: #3dd2cc;
   font-size: 25px;
@@ -821,7 +826,7 @@ label.add-recipient-notes {
 
 .budget-for-gifts {
   position: absolute;
-  top: 130px;
+  top: 100px;
   left: 1000px;
   font-size: 20px;
   border-style: double;
