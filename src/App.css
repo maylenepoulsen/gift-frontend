@@ -188,12 +188,17 @@ footer {
 .post-div {
   position: absolute;
   top: 150px;
-  left: 550px;
+  left: 500px;
+}
+
+.list-posts-div {
+  height: 400px;
+  overflow-y: scroll
 }
 
 .post-wrapper {
   display: grid;
-  grid-template-columns: 300px;
+  grid-template-columns: 350px;
   grid-auto-rows: auto;
   row-gap: 7px;
 }
@@ -214,8 +219,8 @@ footer {
 }
 
 .textarea-post {
-  width: 300px;
-  height: 100px;
+  width: 350px;
+  height: 80px;
   padding: 5px 10px;
   box-sizing: border-box;
   border: 2px solid #3e6b89;
