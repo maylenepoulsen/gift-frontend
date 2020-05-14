@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 class GroupsUserBelongsTo extends Component {
   render() {
-    if (this.props.groupsAccept) {
+    if (this.props.groupsAccept  && this.props.groupsAdmin) {
       return (
         <div>
           <div>

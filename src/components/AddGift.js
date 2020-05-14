@@ -9,7 +9,7 @@ class AddGift extends Component {
     link: "",
     notes: 'notes',
     recipient: "",
-    showModal: false,
+    // showModal: false,
   };
 
   handleChange = (event) => {
